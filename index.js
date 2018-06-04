@@ -54,10 +54,19 @@ function totalRevenue(drivers) {
 }
 
 function averageRevenue(drivers) {
-  let totalprice = 0;
-  drivers.forEach(function(driver) {
-    totalprice += driver.revenue;
+  // let totalprice = 0;
+  // drivers.forEach(function(driver) {
+  //   totalprice += driver.revenue;
+  // })
+  // let averageprice = totalprice/drivers.length;
+  // return averageprice;
+  const reducer_method = (accumulator, currentValue) => accumulator + currentValue;
+
+  const array = []
+  drivers.forEach(function(driver){
+    array.push(driver.revenue);
   })
-  let averageprice = totalprice/drivers.length;
-  return averageprice;
+  let totalprice = array.reduce(reducer_method);
+  let average = totalprice/drivers.length;
+  return average;
 }
